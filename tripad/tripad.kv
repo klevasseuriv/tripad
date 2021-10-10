@@ -1,6 +1,60 @@
 #:kivy 1.0.9
 
+<NetworkConfigItem>:
+
+<KasaControlItem>:
+
+<ListRecycleView>:
+
+<SelectableSSID>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <MainPanel>:
+    # TabbedPanel with tab children
     size_hint: 1,1
     pos_hint: {'center_x': .5, 'center_y': .5}
     do_default_tab: False
+
+    NetworkConfigItem:
+        # Tab 1
+        id: network_config_item
+        text: 'NetConfig'
+        FloatLayout:
+            # floatlayout allows us to place things non-relatively
+            # like actually just use the pixel grid
+            ListRecycleView:
+                # List of SSIDs
+                id: network_ssid_list
+                viewclass: 'SelectableSSID'
+                SelectableRecycleBoxLayout:
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    multiselect: True
+                    touch_multiselect: True
+            Button:
+                text: 'b1'
+                default_size: dp(100), dp(100)
+                pos: 100, 100
+                size_hint: None, None
+                on_press: kasa_control_item.testbutton()
+
+
+    KasaControlItem:
+        # Tab 2
+        id: kasa_control_item
+        text: 'KasaControl'
+        Label:
+            text: 'Kasa Control'
+        Button:
+            text: 'b1'
+            on_press: kasa_control_item.testbutton()
+

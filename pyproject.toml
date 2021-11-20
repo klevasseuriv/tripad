@@ -1,13 +1,14 @@
 [tool.poetry]
 name = "tripad"
-version = "0.1.0"
-license = "MIT"
+version = "0.2.0"
+license = "GPL v3.0"
 description = "Touchscreen Laptop/Tablet Control Plane"
 authors = ["Ken Levasseur <klevasseuriv@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Kivy = "^2.0.0"
+nmcli = "^0.6.1"
+PyQt5 = "^5.15.6"
 
 [tool.poetry.dev-dependencies]
 black = "^21.8b0"

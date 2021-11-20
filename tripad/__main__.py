@@ -1,29 +1,24 @@
 """Tripad application"""
-from kivy.app import App
-from kivy.uix.tabbedpanel import TabbedPanel
-from kivy.uix.behaviors import FocusBehavior
-from kivy.uix.recycleboxlayout import RecycleBoxLayout
-from kivy.uix.recycleview.layout import LayoutSelectionBehavior
+import sys
 
-# unused imports but necessary for kivy to detect these
-from tripad.networkconfigitem import NetworkConfigItem
-from tripad.kasacontrolitem import KasaControlItem
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QWidget
 
 
-class MainPanel(TabbedPanel):
-    pass
+def main():
+    app = QApplication(sys.argv)
+    window = QWidget()
+    window.setWindowTitle("tripad")
+    window.setGeometry(100, 100, 280, 80)
+    window.move(60, 15)
+    helloMsg = QLabel("<h1>tripad</h1>", parent=window)
+    helloMsg.move(60, 15)
 
+    window.show()
 
-class SelectableRecycleBoxLayout(
-    FocusBehavior, LayoutSelectionBehavior, RecycleBoxLayout
-):
-    """Adds selection and focus behaviour to the view."""
-
-
-class TripadApp(App):
-    def build(self):
-        return MainPanel()
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
-    TripadApp().run()
+    main()

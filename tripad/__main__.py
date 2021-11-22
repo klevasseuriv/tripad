@@ -6,6 +6,7 @@ from PyQt5.QtCore import QStringListModel
 
 from tripad.tabs.network import NetworkTab
 from tripad.tabs.kasa import KasaTab
+from tripad.tabs.lxi import LXITab
 
 
 class MainScreenWidget(QWidget):
@@ -22,9 +23,11 @@ class MainScreenWidget(QWidget):
 
         self.nw_tab = NetworkTab()
         self.kasa_tab = KasaTab()
+        self.lxi_tab = LXITab()
 
         self.tabs.addTab(self.nw_tab, "Network")
         self.tabs.addTab(self.kasa_tab, "Kasa")
+        self.tabs.addTab(self.lxi_tab, "LXI")
 
         main_layout.addWidget(self.tabs)
         self.setLayout(main_layout)

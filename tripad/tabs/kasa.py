@@ -34,7 +34,7 @@ class KasaTab(QWidget):
             self.device_data[addr] = {"alias": dev.alias}
 
             dev_item = QListWidgetItem()
-            dev_item.setText(f"{addr} - {dev.alias}")
+            dev_item.setText(f"\n{addr} - {dev.alias}\n")
             self.device_list.insertItem(0, dev_item)
 
     def _on_click_on(self):
